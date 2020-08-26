@@ -19,8 +19,15 @@ const kanbanControlPanel = (state = initialState, action) => {
     switch (action.type) {
 
         case 'TASK_DELETE':
-            const newState = {...state, list: state.list.filter(el => el.id !== action.payload) }
+            const newState = {...state, list: state.list.filter(el => el.id !== action.payload)}
             return newState
+
+        case 'ADD_NEW_COLUMN':
+            return {...state,
+                columns:  [...state.columns, {id: Math.random(), status: 'todo', priority: 4, name: action.payload}]
+
+            }
+            // todos: [...state.todos, {title: action.payload, done: false, id: Math.random()}]
 
         // case 'TASK_ADD':
         //     return {...state, list,: [...state.list]}
