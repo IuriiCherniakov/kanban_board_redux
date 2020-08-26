@@ -23,11 +23,19 @@ const kanbanControlPanel = (state = initialState, action) => {
             return newState
 
         case 'ADD_NEW_COLUMN':
-            return {...state,
-                columns:  [...state.columns, {id: Math.random(), status: 'todo', priority: 4, name: action.payload}]
+            return {
+                ...state,
+                columns: [
+                    ...state.columns, {
+                        id: Math.random(),
+                        status: action.payload.newColumnStatus,
+                        priority: 4,
+                        name: action.payload.newTitleColumn
+                    }
+                ]
 
             }
-            // todos: [...state.todos, {title: action.payload, done: false, id: Math.random()}]
+        // todos: [...state.todos, {title: action.payload, done: false, id: Math.random()}]
 
         // case 'TASK_ADD':
         //     return {...state, list,: [...state.list]}

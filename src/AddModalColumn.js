@@ -5,13 +5,18 @@ import {Button, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader} from "
 
 
 function AddModalColumn(props) {
+   const columnStatuses = [
+       'todo', 'progress', 'review', 'done'
+   ]
+    const [inputNewColumnStatus, setInputNewColumnStatus] = useState(columnStatuses);
+    console.log(columnStatuses)
     const {addNewCol} = props;
     const [isModal, setIsModal] = useState(false)
     const [inputNewColumn, setInputNewColumn] = useState('')
     // ()=>addNewCol(inputNewColumn)
 
     const addNewColumnButton = () => {
-        addNewCol(inputNewColumn);
+        addNewCol(inputNewColumn,inputNewColumnStatus);
         setInputNewColumn('')
     }
 
@@ -30,10 +35,22 @@ function AddModalColumn(props) {
                             setInputNewColumn(e.target.value)
                         }}/>
 
+                        <Label>Status</Label>
+                        <Input type='select' value={inputNewColumnStatus}  onChange={(e) => {
+                            setInputNewColumnStatus(e.target.value)}}>
+                            <option value={'todo'}>Todo</option>
+                            <option value={'progress'}>progress</option>
+                            <option value={'review'}>review</option>
+                            <option value={'done'}>done</option>
+                    </Input>
+
+
+
+
 
                     </ModalBody>
                     <ModalFooter>
-                            <Button onClick={addNewColumnButton}>Add new Column</Button>
+                        <Button onClick={addNewColumnButton}>Add new Column</Button>
                         {' '}
                         <Button onClick={() => {
                             setIsModal(false)
