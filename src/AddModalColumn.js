@@ -8,7 +8,7 @@ function AddModalColumn(props) {
    const columnStatuses = [
        'todo', 'progress', 'review', 'done'
    ]
-    const [inputNewColumnStatus, setInputNewColumnStatus] = useState(columnStatuses);
+    const [inputNewColumnStatus, setInputNewColumnStatus] = useState('');
     console.log(columnStatuses)
     const {addNewCol} = props;
     const [isModal, setIsModal] = useState(false)
@@ -18,6 +18,8 @@ function AddModalColumn(props) {
     const addNewColumnButton = () => {
         addNewCol(inputNewColumn,inputNewColumnStatus);
         setInputNewColumn('')
+        setIsModal(false)
+
     }
 
     console.log(inputNewColumn)
@@ -36,13 +38,16 @@ function AddModalColumn(props) {
                         }}/>
 
                         <Label>Status</Label>
-                        <Input type='select' value={inputNewColumnStatus}  onChange={(e) => {
-                            setInputNewColumnStatus(e.target.value)}}>
-                            <option value={'todo'}>Todo</option>
-                            <option value={'progress'}>progress</option>
-                            <option value={'review'}>review</option>
-                            <option value={'done'}>done</option>
-                    </Input>
+                    {/*    <Input type='select' value={inputNewColumnStatus}  onChange={(e) => {*/}
+                    {/*        setInputNewColumnStatus(e.target.value)}}>*/}
+                    {/*        <option value={'todo'}>Todo</option>*/}
+                    {/*        <option value={'progress'}>progress</option>*/}
+                    {/*        <option value={'review'}>review</option>*/}
+                    {/*        <option value={'done'}>done</option>*/}
+                    {/*</Input>*/}
+                    <Input  value={inputNewColumnStatus}  onChange={(e)=> {setInputNewColumnStatus(e.target.value)}}  />
+
+
 
 
 
