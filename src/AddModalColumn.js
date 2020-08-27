@@ -9,7 +9,7 @@ function AddModalColumn(props) {
    const columnStatuses = [
        'todo', 'progress', 'review', 'done'
    ]
-    const [inputNewColumnStatus, setInputNewColumnStatus] = useState('');
+    const [inputNewColumnStatus, setInputNewColumnStatus] = useState('todo');
     console.log(columnStatuses)
     const {addNewCol} = props;
     const [isModal, setIsModal] = useState(false)

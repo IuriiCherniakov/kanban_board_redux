@@ -5,9 +5,10 @@ import {Button, Col} from "reactstrap";
 import Tasks from "./Tasks";
 
 
+
 function Column(props) {
     const {tasks, column, key, deleteColumn} = props;
-
+    console.log("props", props)
 
     return (
         <Col>

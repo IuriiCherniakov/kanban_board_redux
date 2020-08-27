@@ -8,8 +8,8 @@ function AddModalTask(props) {
     const {addNewTask} = props;
     const [isModalTask, setIsModalTask] = useState(false);
     const [inputNewTitle, setInputNewTitle] = useState('')
-    const [inputNewTaskPriority, setInputNewTaskPriority] = useState('')
-    const [inputNewTaskStatus, setInputNewTaskStatus] = useState('')
+    const [inputNewTaskPriority, setInputNewTaskPriority] = useState(1)
+    const [inputNewTaskStatus, setInputNewTaskStatus] = useState('todo')
     const addNewTaskButton = () =>{
         addNewTask(inputNewTitle, inputNewTaskPriority, inputNewTaskStatus);
         setIsModalTask(false);
