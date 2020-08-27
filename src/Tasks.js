@@ -1,31 +1,34 @@
 import React, {useState} from 'react';
-
 import './App.css';
-import {Col} from "reactstrap";
+import {Button, Card, CardBody} from "reactstrap";
 
-// import {Button, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader} from "reactstrap";
+
 
 
 function Column(props) {
-    const {tasks, column, key, deleteColumn} = props;
-    console.log(column.id)
+    const {tasks} = props;
+    console.log(tasks)
+
 
     return (
-        <Col>
-            <h2>{column.title}</h2>
+        <div>
+            <Card>
+                <CardBody>
+                   <h3> {tasks.name}</h3>
+                    <div>
+                        priority: {tasks.priority}
+
+                    </div>
+                    <Button>🠅</Button>
+                    <Button>🠇</Button>
+
+                </CardBody>
 
 
-            <button onClick={()=>deleteColumn(column.id)}>Delete column</button>
-            {tasks.filter(el=> column.status === el.status)
-                .map(el=>{
-                    return (
-                        <Col>
-                            {el.name}
-                        </Col>
-                    )
-                })
-            }
-        </Col>
+            </Card>
+
+
+        </div>
     );
 }
 

@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import AddModalColumn from "./AddModalColumn";
 import Column from "./Column";
 import {Row} from "reactstrap";
+import AddModalTask from "./AddModalTask";
 
 function Board(props) {
     const [isEditStatusColumn, setIsEditStatusColumn] = useState(false)
@@ -12,6 +13,12 @@ function Board(props) {
     const listOfCards = props.tasks
     const listOfColumns = props.columns
     console.log(listOfColumns)
+
+
+    const addNewTask = (newTaskName,newTaskPriority,newTaskStatus) => {
+        props.addNewTask(newTaskName,newTaskPriority, newTaskStatus)
+
+    }
 
     const addNewCol = (newTitleColumn, newColumnStatus) => {
         props.addNewColumn(newTitleColumn, newColumnStatus)
@@ -26,30 +33,30 @@ function Board(props) {
 
     return (
         <div>
+
             <AddModalColumn
                 addNewCol={addNewCol}
 
+            />
+
+            <AddModalTask
+                addNewTask={addNewTask}
+
+
 
             />
+
+
             <Row>
-                {listOfColumns.map(el =>
-                    <Column
-                        key={el.id}
-                        column={el}
-                        tasks={props.tasks}
-                        deleteColumn={deleteColumn}
+                {listOfColumns.map(
+                    el =>
+                        <Column
+                            key={el.id}
+                            column={el}
+                            tasks={props.tasks}
+                            deleteColumn={deleteColumn}/>
+                )
 
-
-                    />)
-                    // <li
-                    //     key={el.id}>
-                    //     {el.status}
-                    //     <button  onClick={()=>{
-                    //         setIsEditStatusColumn(true)
-                    //         console.log(isEditStatusColumn)
-                    //     }}>Edit status</button>
-                    //     {/*<button onClick={()=>props.deleteTask(el.id)}>del</button>*/}
-                    // </li>)
                 }
             </Row>
 
@@ -64,11 +71,12 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+    addNewTask: (newTaskName,newTaskPriority, newTaskStatus)=>dispatch({type: 'ADD_NEW_TASK', payload: {newTaskName, newTaskPriority,newTaskStatus }}),
     deleteTask: (taskId) => dispatch({type: 'TASK_DELETE', payload: taskId}),
     addNewColumn: (newTitleColumn, newColumnStatus) => dispatch({
         type: 'ADD_NEW_COLUMN',
         payload: {newTitleColumn, newColumnStatus}
     }),
-    deleteColumn:(columnId) => dispatch({type: 'COLUMN_DELETE', payload: columnId })
+    deleteColumn: (columnId) => dispatch({type: 'COLUMN_DELETE', payload: columnId})
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Board);
