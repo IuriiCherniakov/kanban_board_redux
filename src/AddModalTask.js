@@ -5,7 +5,7 @@ import {Button, Col, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader, R
 
 
 function AddModalTask(props) {
-    const {addNewTask} = props;
+    const {addNewTask, statuses} = props;
     const [isModalTask, setIsModalTask] = useState(false);
     const [inputNewTitle, setInputNewTitle] = useState('')
     const [inputNewTaskPriority, setInputNewTaskPriority] = useState(1)
@@ -13,6 +13,7 @@ function AddModalTask(props) {
     const addNewTaskButton = () =>{
         addNewTask(inputNewTitle, inputNewTaskPriority, inputNewTaskStatus);
         setIsModalTask(false);
+        setInputNewTitle('');
         console.log(inputNewTitle);
         console.log(inputNewTaskPriority);
         console.log(inputNewTaskStatus);
@@ -28,7 +29,7 @@ function AddModalTask(props) {
                     <ModalHeader>Add new task</ModalHeader>
                     <ModalBody>
                         <Label>New title</Label>
-                        <Input type='text' value={inputNewTitle} onChange={(e)=>{setInputNewTitle(e.target.value)}}></Input>
+                        <Input type='text' value={inputNewTitle} onChange={(e)=>{setInputNewTitle(e.target.value)}}/>
 
                         <Row>
                             <Col>
@@ -45,10 +46,11 @@ function AddModalTask(props) {
 
                                 <Label>status</Label>
                                 <Input type='select' value={inputNewTaskStatus} onChange={(e)=> {setInputNewTaskStatus(e.target.value)}}>
-                                    <option value="todo">todo</option>
-                                    <option value="progress">progress</option>
-                                    <option value="review">review</option>
-                                    <option value="done">done</option>
+                                    {statuses.map(el=> <option value={el}>{el}</option> )}
+
+                                    {/*<option value="progress">progress</option>*/}
+                                    {/*<option value="review">review</option>*/}
+                                    {/*<option value="done">done</option>*/}
 
                                 </Input>
 

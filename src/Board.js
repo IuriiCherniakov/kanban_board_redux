@@ -7,16 +7,13 @@ import {Row} from "reactstrap";
 import AddModalTask from "./AddModalTask";
 
 function Board(props) {
-    const [isEditStatusColumn, setIsEditStatusColumn] = useState(false)
-    console.log(props)
 
-    const listOfCards = props.tasks
+
     const listOfColumns = props.columns
-    console.log(listOfColumns)
-
-
-    const addNewTask = (newTaskName,newTaskPriority,newTaskStatus) => {
-        props.addNewTask(newTaskName,newTaskPriority, newTaskStatus)
+    const statuses = listOfColumns.map(el => el.status)
+    console.log('statuses', statuses)
+    const addNewTask = (newTaskName, newTaskPriority, newTaskStatus) => {
+        props.addNewTask(newTaskName, newTaskPriority, newTaskStatus)
 
     }
 
@@ -26,6 +23,10 @@ function Board(props) {
 
     const deleteColumn = (columnId) => {
         props.deleteColumn(columnId)
+    }
+
+    const changeTaskPriority = () => {
+        props.changeTaskPriority()
     }
     // const deleteTask = (taskId) => {
     //     props.deleteTask(taskId)
@@ -41,7 +42,7 @@ function Board(props) {
 
             <AddModalTask
                 addNewTask={addNewTask}
-
+                statuses={statuses}
 
 
             />
@@ -56,7 +57,6 @@ function Board(props) {
                             tasks={props.tasks}
                             deleteColumn={deleteColumn}/>
                 )
-
                 }
             </Row>
 
@@ -71,12 +71,19 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    addNewTask: (newTaskName,newTaskPriority, newTaskStatus)=>dispatch({type: 'ADD_NEW_TASK', payload: {newTaskName, newTaskPriority,newTaskStatus }}),
+    addNewTask: (newTaskName, newTaskPriority, newTaskStatus) => dispatch({
+        type: 'ADD_NEW_TASK',
+        payload: {newTaskName, newTaskPriority, newTaskStatus}
+    }),
     deleteTask: (taskId) => dispatch({type: 'TASK_DELETE', payload: taskId}),
     addNewColumn: (newTitleColumn, newColumnStatus) => dispatch({
         type: 'ADD_NEW_COLUMN',
         payload: {newTitleColumn, newColumnStatus}
     }),
-    deleteColumn: (columnId) => dispatch({type: 'COLUMN_DELETE', payload: columnId})
+    deleteColumn: (columnId) => dispatch({type: 'COLUMN_DELETE', payload: columnId}),
+    changeTaskPriority: (taskId) => dispatch({
+        type: 'CHANGE_TASK_PRIORITY',
+        payload: taskId
+    })
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Board);

@@ -8,7 +8,7 @@ import Tasks from "./Tasks";
 
 function Column(props) {
     const {tasks, column, key, deleteColumn} = props;
-    console.log("props", props)
+    console.log("status column", column.status)
 
     return (
         <Col>
@@ -16,10 +16,12 @@ function Column(props) {
 
 
             <Button onClick={() => deleteColumn(column.id)}>Delete column</Button>
+
             {tasks.filter(el => column.status === el.status)
                 .map(el =>
                     <Tasks
                         tasks={el}
+                        key={el.id}
 
 
                     />

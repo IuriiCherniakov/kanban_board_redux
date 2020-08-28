@@ -21,7 +21,7 @@ const kanbanControlPanel = (state = initialState, action) => {
         case 'ADD_NEW_TASK':
             return {
                 ...state,
-                tasks: [...state.list, {
+                list: [...state.list, {
                     id: Math.random(),
                     status: action.payload.newTaskStatus,
                     priority: action.payload.newTaskPriority,
@@ -51,6 +51,24 @@ const kanbanControlPanel = (state = initialState, action) => {
             return {
                 ...state, columns: state.columns.filter(el => el.id !== action.payload)
             }
+
+        case 'CHANGE_TASK_PRIORITY':
+
+            return {
+                ...state, list: state.list.map((el) => {
+
+                    if (el.id === action.payload.taskId) return ({...el, priority :action.payload.taskPriority+1})
+        }
+                )
+        }
+
+
+
+
+
+
+
+
         // todos: [...state.todos, {title: action.payload, done: false, id: Math.random()}]
 
         // case 'TASK_ADD':
