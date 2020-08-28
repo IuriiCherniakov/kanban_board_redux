@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/kanban_board_redux/static/css/main.5f361e03.chunk.css",
+    "main.js": "/kanban_board_redux/static/js/main.d1124167.chunk.js",
+    "main.js.map": "/kanban_board_redux/static/js/main.d1124167.chunk.js.map",
+    "runtime-main.js": "/kanban_board_redux/static/js/runtime-main.a15a1156.js",
+    "runtime-main.js.map": "/kanban_board_redux/static/js/runtime-main.a15a1156.js.map",
+    "static/css/2.11829350.chunk.css": "/kanban_board_redux/static/css/2.11829350.chunk.css",
+    "static/js/2.e45ef790.chunk.js": "/kanban_board_redux/static/js/2.e45ef790.chunk.js",
+    "static/js/2.e45ef790.chunk.js.map": "/kanban_board_redux/static/js/2.e45ef790.chunk.js.map",
+    "index.html": "/kanban_board_redux/index.html",
+    "precache-manifest.6553ea80ad43e8b2e01d564d628263ec.js": "/kanban_board_redux/precache-manifest.6553ea80ad43e8b2e01d564d628263ec.js",
+    "service-worker.js": "/kanban_board_redux/service-worker.js",
+    "static/css/2.11829350.chunk.css.map": "/kanban_board_redux/static/css/2.11829350.chunk.css.map",
+    "static/css/main.5f361e03.chunk.css.map": "/kanban_board_redux/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.e45ef790.chunk.js.LICENSE.txt": "/kanban_board_redux/static/js/2.e45ef790.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a15a1156.js",
+    "static/css/2.11829350.chunk.css",
+    "static/js/2.e45ef790.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.d1124167.chunk.js"
+  ]
+}
