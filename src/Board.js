@@ -12,8 +12,12 @@ function Board(props) {
     const listOfColumns = props.columns
     const statuses = listOfColumns.map(el => el.status)
     console.log('statuses', statuses)
-    const addNewTask = (newTaskName, newTaskPriority, newTaskStatus) => {
-        props.addNewTask(newTaskName, newTaskPriority, newTaskStatus)
+    const addNewTask = (newTaskName, newTaskPriority, newTaskStatus, taskIndex) => {
+        const newTaskIndex = taskIndex + 1;
+        const currentTaskIndex = taskIndex;
+        console.log(newTaskIndex)
+
+        props.addNewTask(newTaskName, newTaskPriority, newTaskStatus, taskIndex)
 
     }
 
@@ -25,8 +29,8 @@ function Board(props) {
         props.deleteColumn(columnId)
     }
 
-    const changeTaskPriority = () => {
-        props.changeTaskPriority()
+    const changeTaskPriority = (taskId,taskPriority,taskIndexCurrent,taskIndexPrevious) => {
+        props.changeTaskPriority(taskId,taskPriority,taskIndexCurrent,taskIndexPrevious)
     }
     // const deleteTask = (taskId) => {
     //     props.deleteTask(taskId)
@@ -55,7 +59,8 @@ function Board(props) {
                             key={el.id}
                             column={el}
                             tasks={props.tasks}
-                            deleteColumn={deleteColumn}/>
+                            deleteColumn={deleteColumn}
+                            changeTaskPriority={changeTaskPriority}/>
                 )
                 }
             </Row>
@@ -81,9 +86,9 @@ const mapDispatchToProps = (dispatch) => ({
         payload: {newTitleColumn, newColumnStatus}
     }),
     deleteColumn: (columnId) => dispatch({type: 'COLUMN_DELETE', payload: columnId}),
-    changeTaskPriority: (taskId) => dispatch({
+    changeTaskPriority: (taskId,taskPriority,taskIndexCurrent,taskIndexPrevious) => dispatch({
         type: 'CHANGE_TASK_PRIORITY',
-        payload: taskId
+        payload: {taskId,taskPriority,taskIndexCurrent,taskIndexPrevious }
     })
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Board);

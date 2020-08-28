@@ -7,7 +7,7 @@ import Tasks from "./Tasks";
 
 
 function Column(props) {
-    const {tasks, column, key, deleteColumn} = props;
+    const {tasks, column, key, deleteColumn,changeTaskPriority} = props;
     console.log("status column", column.status)
 
     return (
@@ -22,6 +22,7 @@ function Column(props) {
                     <Tasks
                         tasks={el}
                         key={el.id}
+                        changeTaskPriority={changeTaskPriority}
 
 
                     />
