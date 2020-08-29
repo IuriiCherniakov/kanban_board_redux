@@ -52,7 +52,7 @@ const kanbanControlPanel = (state = initialState, action) => {
                 ...state, columns: state.columns.filter(el => el.id !== action.payload)
             }
 
-        case 'CHANGE_TASK_PRIORITY':
+        case 'CHANGE_TASK_PRIORITY_UP':
             const newPriority = action.payload.taskPriority + 1;
             let currTaskIndex = action.payload.taskIndexCurrent;
             let prevTaskIndex = action.payload.taskIndexPrevious;
@@ -65,6 +65,25 @@ const kanbanControlPanel = (state = initialState, action) => {
                     return el
                 })
             }
+
+        case 'DELETE_TASK':
+
+            return {
+
+                ...state, list: state.list.filter(el=> el !== action.payload)
+            }
+
+
+
+
+
+
+
+
+
+
+
+
 
 // console.log(newPriority)
 // return {

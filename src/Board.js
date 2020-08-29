@@ -13,12 +13,7 @@ function Board(props) {
     const statuses = listOfColumns.map(el => el.status)
     console.log('statuses', statuses)
     const addNewTask = (newTaskName, newTaskPriority, newTaskStatus, taskIndex) => {
-        const newTaskIndex = taskIndex + 1;
-        const currentTaskIndex = taskIndex;
-        console.log(newTaskIndex)
-
         props.addNewTask(newTaskName, newTaskPriority, newTaskStatus, taskIndex)
-
     }
 
     const addNewCol = (newTitleColumn, newColumnStatus) => {
@@ -27,6 +22,10 @@ function Board(props) {
 
     const deleteColumn = (columnId) => {
         props.deleteColumn(columnId)
+    }
+
+    const deleteTask = (taskId) => {
+        props.deleteTask(taskId)
     }
 
     const changeTaskPriority = (taskId,taskPriority,taskIndexCurrent,taskIndexPrevious) => {
@@ -60,7 +59,9 @@ function Board(props) {
                             column={el}
                             tasks={props.tasks}
                             deleteColumn={deleteColumn}
-                            changeTaskPriority={changeTaskPriority}/>
+                            changeTaskPriority={changeTaskPriority}
+                            deleteTask={deleteTask}
+                        />
                 )
                 }
             </Row>
@@ -80,14 +81,14 @@ const mapDispatchToProps = (dispatch) => ({
         type: 'ADD_NEW_TASK',
         payload: {newTaskName, newTaskPriority, newTaskStatus}
     }),
-    deleteTask: (taskId) => dispatch({type: 'TASK_DELETE', payload: taskId}),
+    deleteTask: (taskId) => dispatch({type: 'DELETE_TASK', payload: taskId}),
     addNewColumn: (newTitleColumn, newColumnStatus) => dispatch({
         type: 'ADD_NEW_COLUMN',
         payload: {newTitleColumn, newColumnStatus}
     }),
     deleteColumn: (columnId) => dispatch({type: 'COLUMN_DELETE', payload: columnId}),
     changeTaskPriority: (taskId,taskPriority,taskIndexCurrent,taskIndexPrevious) => dispatch({
-        type: 'CHANGE_TASK_PRIORITY',
+        type: 'CHANGE_TASK_PRIORITY_UP',
         payload: {taskId,taskPriority,taskIndexCurrent,taskIndexPrevious }
     })
 })
