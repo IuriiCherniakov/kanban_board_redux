@@ -73,7 +73,7 @@ const kanbanControlPanel = (state = initialState, action) => {
             return {
                 ...state, list: state.list.map((el, i) => {
 
-                    if (el.id === action.payload.taskId) return ({...el, priority: newPriority1, i: currTaskIndex1 -1 })
+                    if (el.id === action.payload.taskId) return ({...el, priority: newPriority1, i: currTaskIndex1 - 1})
                     if (i === currTaskIndex1) return state.list[prevTaskIndex1]
                     if (i === prevTaskIndex1) return state.list[currTaskIndex1]
                     return el
@@ -81,13 +81,36 @@ const kanbanControlPanel = (state = initialState, action) => {
             }
 
 
-
         case 'DELETE_TASK':
 
             return {
 
-                ...state, list: state.list.filter(el=> el.id !== action.payload)
+                ...state, list: state.list.filter(el => el.id !== action.payload)
             }
+
+        case 'EDIT_TASK':
+
+            return {
+                ...state,
+                list: state.list.map(el => {
+                        if (el.id === action.payload.taskId) return ({...el, name: action.payload.newTaskName})
+                    }
+                )
+
+
+            }
+
+        // case 'EDIT_TODO':
+        // //
+        // //     return {
+        // //         ...state,
+        // //         todos: state.todos.map(el => {
+        // //             if (el.id === action.payload.todoId) return ({...el, title: action.payload.newTitle})
+        // //             return el
+        // //         })
+        // //     };
+
+
 
 
 
@@ -110,8 +133,8 @@ const kanbanControlPanel = (state = initialState, action) => {
 //     return {...state, list,: [...state.list]}
 
 
-default:
-return state
-}
+        default:
+            return state
+    }
 }
 export default kanbanControlPanel;

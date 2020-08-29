@@ -36,6 +36,10 @@ function Board(props) {
         props.changeTaskPriorityDown(taskId,taskPriority,taskIndexCurrent,taskIndexPrevious);
     }
 
+    const editTaskName = (taskId, newTaskName)=> {
+        props.editTask(taskId, newTaskName)
+    }
+
     return (
         <div>
 
@@ -63,6 +67,7 @@ function Board(props) {
                             changeTaskPriority={changeTaskPriority}
                             deleteTask={deleteTask}
                             changeTaskPriorityDown={changeTaskPriorityDown}
+                            editTaskName={editTaskName}
                         />
                 )
                 }
@@ -97,6 +102,11 @@ const mapDispatchToProps = (dispatch) => ({
     changeTaskPriorityDown: (taskId,taskPriority,taskIndexCurrent,taskIndexPrevious) => dispatch({
         type: 'CHANGE_TASK_PRIORITY_DOWN',
         payload: {taskId,taskPriority,taskIndexCurrent,taskIndexPrevious }
+    }),
+
+    editTask: (taskId, newTaskName) => dispatch({
+        type: 'EDIT_TASK',
+        payload: {taskId,newTaskName}
     })
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Board);
