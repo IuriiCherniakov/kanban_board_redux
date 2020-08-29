@@ -6,7 +6,7 @@ import Tasks from "./Tasks";
 
 
 function Column(props) {
-    const {tasks, column, deleteColumn, changeTaskPriority, deleteTask} = props;
+    const {tasks, column, deleteColumn, changeTaskPriority, deleteTask, changeTaskPriorityDown} = props;
     console.log("status column", column.status)
 
     return (
@@ -17,7 +17,7 @@ function Column(props) {
             <Button onClick={() => deleteColumn(column.id)}>Delete column</Button>
 
             {tasks.filter(el => column.status === el.status)
-                .map((el, i) =>
+                .sort((a,b)=>b.priority - a.priority).map((el, i) =>
                     <Tasks
 
                         tasks={el}
@@ -25,6 +25,7 @@ function Column(props) {
                         changeTaskPriority={changeTaskPriority}
                         deleteTask={deleteTask}
                         i={i}
+                        changeTaskPriorityDown={changeTaskPriorityDown}
                     />
                 )
 

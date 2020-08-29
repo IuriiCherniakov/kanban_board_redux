@@ -59,18 +59,34 @@ const kanbanControlPanel = (state = initialState, action) => {
             return {
                 ...state, list: state.list.map((el, i) => {
 
-                    if (el.id === action.payload.taskId) return ({...el, priority: newPriority, i: i + 1})
+                    if (el.id === action.payload.taskId) return ({...el, priority: newPriority, i: currTaskIndex + 1})
                     if (i === currTaskIndex) return state.list[prevTaskIndex]
                     if (i === prevTaskIndex) return state.list[currTaskIndex]
                     return el
                 })
             }
 
+        case 'CHANGE_TASK_PRIORITY_DOWN':
+            const newPriority1 = action.payload.taskPriority - 1;
+            let currTaskIndex1 = action.payload.taskIndexCurrent;
+            let prevTaskIndex1 = action.payload.taskIndexPrevious;
+            return {
+                ...state, list: state.list.map((el, i) => {
+
+                    if (el.id === action.payload.taskId) return ({...el, priority: newPriority1, i: currTaskIndex1 -1 })
+                    if (i === currTaskIndex1) return state.list[prevTaskIndex1]
+                    if (i === prevTaskIndex1) return state.list[currTaskIndex1]
+                    return el
+                })
+            }
+
+
+
         case 'DELETE_TASK':
 
             return {
 
-                ...state, list: state.list.filter(el=> el !== action.payload)
+                ...state, list: state.list.filter(el=> el.id !== action.payload)
             }
 
 

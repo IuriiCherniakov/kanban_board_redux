@@ -31,9 +31,10 @@ function Board(props) {
     const changeTaskPriority = (taskId,taskPriority,taskIndexCurrent,taskIndexPrevious) => {
         props.changeTaskPriority(taskId,taskPriority,taskIndexCurrent,taskIndexPrevious)
     }
-    // const deleteTask = (taskId) => {
-    //     props.deleteTask(taskId)
-    // }
+
+    const changeTaskPriorityDown = (taskId,taskPriority,taskIndexCurrent,taskIndexPrevious) => {
+        props.changeTaskPriorityDown(taskId,taskPriority,taskIndexCurrent,taskIndexPrevious);
+    }
 
     return (
         <div>
@@ -61,6 +62,7 @@ function Board(props) {
                             deleteColumn={deleteColumn}
                             changeTaskPriority={changeTaskPriority}
                             deleteTask={deleteTask}
+                            changeTaskPriorityDown={changeTaskPriorityDown}
                         />
                 )
                 }
@@ -89,6 +91,11 @@ const mapDispatchToProps = (dispatch) => ({
     deleteColumn: (columnId) => dispatch({type: 'COLUMN_DELETE', payload: columnId}),
     changeTaskPriority: (taskId,taskPriority,taskIndexCurrent,taskIndexPrevious) => dispatch({
         type: 'CHANGE_TASK_PRIORITY_UP',
+        payload: {taskId,taskPriority,taskIndexCurrent,taskIndexPrevious }
+    }),
+
+    changeTaskPriorityDown: (taskId,taskPriority,taskIndexCurrent,taskIndexPrevious) => dispatch({
+        type: 'CHANGE_TASK_PRIORITY_DOWN',
         payload: {taskId,taskPriority,taskIndexCurrent,taskIndexPrevious }
     })
 })
