@@ -4,19 +4,25 @@ import {Button, Card, CardBody, Input} from "reactstrap";
 
 
 function Tasks(props) {
-    const {tasks, changeTaskPriority, deleteTask, changeTaskPriorityDown, editTaskName, i} = props;
+    const {tasks, changeTaskPriority, deleteTask, changeTaskPriorityDown, editTaskName, i, changeTaskStatusPlus, taskStatuses } = props;
 
     const [editMode, setEditMode] = useState(false);
     const [editTask, setEditTask] = useState(tasks.name)
+    // const taskStatuses = ['todo', 'progress', 'review', 'done']
 
     const deleteButtonHandler = () => {
         deleteTask(tasks.id)
     }
 
     const saveButton = () => {
-        //
-        // editTaskName(tasks.id, editTask)
+
+        editTaskName(tasks.id, editTask)
         setEditMode(false)
+    }
+
+    const moveRightButton = () => {
+        changeTaskStatusPlus(tasks.id, taskStatuses[i+1])
+        console.log(taskStatuses[i+1])
     }
 
     console.log('PROPS')
@@ -54,7 +60,7 @@ function Tasks(props) {
                     >🠇</Button>
 
                     <Button>←</Button>
-                    <Button>→</Button>
+                    <Button onClick={moveRightButton}>→</Button>
 
 
                 </CardBody>

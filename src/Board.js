@@ -11,7 +11,8 @@ function Board(props) {
 
     const listOfColumns = props.columns
     const statuses = listOfColumns.map(el => el.status)
-    console.log('statuses', statuses)
+    const taskStatuses = props.tasks.map(el=> el.status)
+    console.log('TASKstatuses', taskStatuses)
     const addNewTask = (newTaskName, newTaskPriority, newTaskStatus, taskIndex) => {
         props.addNewTask(newTaskName, newTaskPriority, newTaskStatus, taskIndex)
     }
@@ -28,16 +29,21 @@ function Board(props) {
         props.deleteTask(taskId)
     }
 
-    const changeTaskPriority = (taskId,taskPriority,taskIndexCurrent,taskIndexPrevious) => {
-        props.changeTaskPriority(taskId,taskPriority,taskIndexCurrent,taskIndexPrevious)
+    const changeTaskPriority = (taskId, taskPriority, taskIndexCurrent, taskIndexPrevious) => {
+        props.changeTaskPriority(taskId, taskPriority, taskIndexCurrent, taskIndexPrevious)
     }
 
-    const changeTaskPriorityDown = (taskId,taskPriority,taskIndexCurrent,taskIndexPrevious) => {
-        props.changeTaskPriorityDown(taskId,taskPriority,taskIndexCurrent,taskIndexPrevious);
+    const changeTaskPriorityDown = (taskId, taskPriority, taskIndexCurrent, taskIndexPrevious) => {
+        props.changeTaskPriorityDown(taskId, taskPriority, taskIndexCurrent, taskIndexPrevious);
     }
 
-    const editTaskName = (taskId, newTaskName)=> {
+    const editTaskName = (taskId, newTaskName) => {
         props.editTask(taskId, newTaskName)
+    }
+
+    const changeTaskStatusPlus = (taskId, newTaskStatus) => {
+        props.changeTaskStatusPlus(taskId, newTaskStatus)
+
     }
 
     return (
@@ -68,6 +74,8 @@ function Board(props) {
                             deleteTask={deleteTask}
                             changeTaskPriorityDown={changeTaskPriorityDown}
                             editTaskName={editTaskName}
+                            changeTaskStatusPlus={changeTaskStatusPlus}
+                            taskStatuses={taskStatuses}
                         />
                 )
                 }
@@ -94,19 +102,24 @@ const mapDispatchToProps = (dispatch) => ({
         payload: {newTitleColumn, newColumnStatus}
     }),
     deleteColumn: (columnId) => dispatch({type: 'COLUMN_DELETE', payload: columnId}),
-    changeTaskPriority: (taskId,taskPriority,taskIndexCurrent,taskIndexPrevious) => dispatch({
+    changeTaskPriority: (taskId, taskPriority, taskIndexCurrent, taskIndexPrevious) => dispatch({
         type: 'CHANGE_TASK_PRIORITY_UP',
-        payload: {taskId,taskPriority,taskIndexCurrent,taskIndexPrevious }
+        payload: {taskId, taskPriority, taskIndexCurrent, taskIndexPrevious}
     }),
 
-    changeTaskPriorityDown: (taskId,taskPriority,taskIndexCurrent,taskIndexPrevious) => dispatch({
+    changeTaskPriorityDown: (taskId, taskPriority, taskIndexCurrent, taskIndexPrevious) => dispatch({
         type: 'CHANGE_TASK_PRIORITY_DOWN',
-        payload: {taskId,taskPriority,taskIndexCurrent,taskIndexPrevious }
+        payload: {taskId, taskPriority, taskIndexCurrent, taskIndexPrevious}
     }),
 
     editTask: (taskId, newTaskName) => dispatch({
         type: 'EDIT_TASK',
-        payload: {taskId,newTaskName}
+        payload: {taskId, newTaskName}
+    }),
+
+    changeTaskStatusPlus: (taskId, newTaskStatus) => dispatch({
+        type: 'CHANGE_TASK_STATUS_PLUS',
+        payload: {taskId, newTaskStatus}
     })
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Board);

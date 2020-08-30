@@ -94,11 +94,22 @@ const kanbanControlPanel = (state = initialState, action) => {
                 ...state,
                 list: state.list.map(el => {
                         if (el.id === action.payload.taskId) return ({...el, name: action.payload.newTaskName})
+
+                return el
+                }
+                    )
+            }
+
+        case 'CHANGE_TASK_STATUS_PLUS':
+            return{
+                ...state,
+                list: state.list.map(el => {
+                    if (el.id === action.payload.taskId) return ({...el, status: action.payload.newTaskStatus})
+                        return el
                     }
                 )
-
-
             }
+
 
         // case 'EDIT_TODO':
         // //
