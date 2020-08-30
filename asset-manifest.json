@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/kanban_board_redux/static/css/main.5f361e03.chunk.css",
-    "main.js": "/kanban_board_redux/static/js/main.1c884a2a.chunk.js",
-    "main.js.map": "/kanban_board_redux/static/js/main.1c884a2a.chunk.js.map",
+    "main.js": "/kanban_board_redux/static/js/main.93d7a5dc.chunk.js",
+    "main.js.map": "/kanban_board_redux/static/js/main.93d7a5dc.chunk.js.map",
     "runtime-main.js": "/kanban_board_redux/static/js/runtime-main.a15a1156.js",
     "runtime-main.js.map": "/kanban_board_redux/static/js/runtime-main.a15a1156.js.map",
     "static/css/2.11829350.chunk.css": "/kanban_board_redux/static/css/2.11829350.chunk.css",
     "static/js/2.27666470.chunk.js": "/kanban_board_redux/static/js/2.27666470.chunk.js",
     "static/js/2.27666470.chunk.js.map": "/kanban_board_redux/static/js/2.27666470.chunk.js.map",
     "index.html": "/kanban_board_redux/index.html",
-    "precache-manifest.32a960f4bf67f4dfca7ea6cb351d3426.js": "/kanban_board_redux/precache-manifest.32a960f4bf67f4dfca7ea6cb351d3426.js",
+    "precache-manifest.7e3cd3c755badffdee95b0dc94ce8eef.js": "/kanban_board_redux/precache-manifest.7e3cd3c755badffdee95b0dc94ce8eef.js",
     "service-worker.js": "/kanban_board_redux/service-worker.js",
     "static/css/2.11829350.chunk.css.map": "/kanban_board_redux/static/css/2.11829350.chunk.css.map",
     "static/css/main.5f361e03.chunk.css.map": "/kanban_board_redux/static/css/main.5f361e03.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.11829350.chunk.css",
     "static/js/2.27666470.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.1c884a2a.chunk.js"
+    "static/js/main.93d7a5dc.chunk.js"
   ]
 }
