@@ -23,7 +23,7 @@ function AddModalColumn(props) {
 
     }
 
-    console.log(inputNewColumn)
+
     return (
         <div>
 

@@ -4,11 +4,14 @@ import {Button, Card, CardBody, Input} from "reactstrap";
 
 
 function Tasks(props) {
-    const {tasks, changeTaskPriority, deleteTask, changeTaskPriorityDown, editTaskName, i, changeTaskStatusPlus, taskStatuses } = props;
+    const {tasks, changeTaskPriority, deleteTask, changeTaskPriorityDown, editTaskName, i, changeTaskStatusPlus, changeTaskStatusMinus,listOfTasks} = props;
 
     const [editMode, setEditMode] = useState(false);
     const [editTask, setEditTask] = useState(tasks.name)
-    // const taskStatuses = ['todo', 'progress', 'review', 'done']
+    const taskStatuses = ['todo', 'progress', 'review', 'done']
+    // const taskStatuses1 = listOfTasks.map(el=> el.status) // WHY THIS SOLUTION DOESN`T WORK  ???
+    console.log(taskStatuses)
+    // console.log(taskStatuses1)
 
     const deleteButtonHandler = () => {
         deleteTask(tasks.id)
@@ -21,12 +24,14 @@ function Tasks(props) {
     }
 
     const moveRightButton = () => {
-        changeTaskStatusPlus(tasks.id, taskStatuses[i+1])
-        console.log(taskStatuses[i+1])
+        changeTaskStatusPlus(tasks.id, taskStatuses[taskStatuses.indexOf(tasks.status) + 1]) // IT NEEDS TO EXPLAIN
+
     }
 
-    console.log('PROPS')
-    console.log(props)
+    const moveLeftButton = () => {
+        changeTaskStatusMinus(tasks.id, taskStatuses[taskStatuses.indexOf(tasks.status) - 1]) // IT NEEDS TO EXPLAIN
+
+    }
 
 
     return (
@@ -36,8 +41,12 @@ function Tasks(props) {
 
                     {editMode ?
                         <div>
+
                             <Input value={editTask} onChange={(e) => setEditTask(e.target.value)}/>
                             <Button onClick={saveButton}>Save</Button>
+                            <Button onClick={() => {
+                                setEditMode(false)
+                            }}>Cancel</Button>
                         </div>
                         :
                         <h3> {tasks.name} </h3>
@@ -45,8 +54,8 @@ function Tasks(props) {
                     }
 
 
-                    <Button onClick={() => setEditMode(true)}>Edit</Button>
                     <Button onClick={deleteButtonHandler}> Del </Button>
+                    <Button onClick={() => setEditMode(true)}>Edit</Button>
 
 
                     <div>
@@ -59,8 +68,8 @@ function Tasks(props) {
                             onClick={() => changeTaskPriorityDown(tasks.id, tasks.priority, tasks.i, tasks.i + 1)}
                     >🠇</Button>
 
-                    <Button>←</Button>
-                    <Button onClick={moveRightButton}>→</Button>
+                    <Button disabled={tasks.status === 'todo'} onClick={moveLeftButton}>←</Button>
+                    <Button  onClick={moveRightButton}>→</Button>
 
 
                 </CardBody>

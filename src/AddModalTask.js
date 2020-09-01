@@ -14,9 +14,7 @@ function AddModalTask(props) {
         addNewTask(inputNewTitle, inputNewTaskPriority, inputNewTaskStatus);
         setIsModalTask(false);
         setInputNewTitle('');
-        console.log(inputNewTitle);
-        console.log(inputNewTaskPriority);
-        console.log(inputNewTaskStatus);
+
     }
 
     return (

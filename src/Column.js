@@ -6,8 +6,20 @@ import Tasks from "./Tasks";
 
 
 function Column(props) {
-    const {tasks, column, deleteColumn, changeTaskPriority, deleteTask, changeTaskPriorityDown, editTaskName, changeTaskStatusPlus, taskStatuses} = props;
-    console.log("status column", column.status)
+    const {
+        tasks,
+        column,
+        deleteColumn,
+        changeTaskPriority,
+        deleteTask,
+        changeTaskPriorityDown,
+        editTaskName,
+        changeTaskStatusPlus,
+        taskStatuses,
+        changeTaskStatusMinus,
+        listOfTasks
+    } = props;
+
 
     return (
         <Col>
@@ -29,6 +41,8 @@ function Column(props) {
                         editTaskName={editTaskName}
                         changeTaskStatusPlus={changeTaskStatusPlus}
                         taskStatuses={taskStatuses}
+                        changeTaskStatusMinus={changeTaskStatusMinus}
+                        listOfTasks={listOfTasks}
                     />
                 )
 

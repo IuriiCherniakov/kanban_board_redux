@@ -1,9 +1,9 @@
 const initialState = {
     list: [
         {id: Math.random(), status: 'todo', priority: 1, name: 'Text 1'},
-        {id: Math.random(), status: 'progress', priority: 2, name: 'Text 2'},
-        {id: Math.random(), status: 'done', priority: 3, name: 'Text 3'},
-        {id: Math.random(), status: 'done', priority: 4, name: 'Text 4'},
+        {id: Math.random(), status: 'todo', priority: 2, name: 'Text 2'},
+        {id: Math.random(), status: 'todo', priority: 3, name: 'Text 3'},
+        {id: Math.random(), status: 'todo', priority: 4, name: 'Text 4'},
 
     ],
     columns: [
@@ -105,6 +105,16 @@ const kanbanControlPanel = (state = initialState, action) => {
                 ...state,
                 list: state.list.map(el => {
                     if (el.id === action.payload.taskId) return ({...el, status: action.payload.newTaskStatus})
+                        return el
+                    }
+                )
+            }
+
+        case 'CHANGE_TASK_STATUS_MINUS':
+            return{
+                ...state,
+                list: state.list.map(el => {
+                        if (el.id === action.payload.taskId) return ({...el, status: action.payload.newTaskStatus})
                         return el
                     }
                 )

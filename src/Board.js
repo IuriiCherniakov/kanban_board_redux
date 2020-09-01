@@ -8,11 +8,13 @@ import AddModalTask from "./AddModalTask";
 
 function Board(props) {
 
-
+    const listOfTasks = props.tasks
     const listOfColumns = props.columns
     const statuses = listOfColumns.map(el => el.status)
     const taskStatuses = props.tasks.map(el=> el.status)
-    console.log('TASKstatuses', taskStatuses)
+    const taskId = props.tasks.map(el=> el.id)
+
+
     const addNewTask = (newTaskName, newTaskPriority, newTaskStatus, taskIndex) => {
         props.addNewTask(newTaskName, newTaskPriority, newTaskStatus, taskIndex)
     }
@@ -46,17 +48,24 @@ function Board(props) {
 
     }
 
+    const changeTaskStatusMinus = (taskId, newTaskStatus) => {
+        props.changeTaskStatusMinus(taskId, newTaskStatus)
+
+    }
+
     return (
         <div>
 
             <AddModalColumn
                 addNewCol={addNewCol}
+                // key={taskId.i} HOW TO TRANSFER THE KEY ???
 
             />
 
             <AddModalTask
                 addNewTask={addNewTask}
                 statuses={statuses}
+                // key={taskId.id} HOW TO TRANSFER THE KEY ???
 
 
             />
@@ -76,6 +85,9 @@ function Board(props) {
                             editTaskName={editTaskName}
                             changeTaskStatusPlus={changeTaskStatusPlus}
                             taskStatuses={taskStatuses}
+                            changeTaskStatusMinus={changeTaskStatusMinus}
+                            listOfTasks={listOfTasks}
+
                         />
                 )
                 }
@@ -119,6 +131,11 @@ const mapDispatchToProps = (dispatch) => ({
 
     changeTaskStatusPlus: (taskId, newTaskStatus) => dispatch({
         type: 'CHANGE_TASK_STATUS_PLUS',
+        payload: {taskId, newTaskStatus}
+    }),
+
+    changeTaskStatusMinus: (taskId, newTaskStatus) => dispatch({
+        type: 'CHANGE_TASK_STATUS_MINUS',
         payload: {taskId, newTaskStatus}
     })
 })
