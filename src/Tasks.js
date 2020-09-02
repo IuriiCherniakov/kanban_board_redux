@@ -11,7 +11,7 @@ function Tasks(props) {
     const taskStatuses = ['todo', 'progress', 'review', 'done']
     // const taskStatuses1 = listOfTasks.map(el=> el.status) // WHY THIS SOLUTION DOESN`T WORK  ???
     console.log(taskStatuses)
-    // console.log(taskStatuses1)
+
 
     const deleteButtonHandler = () => {
         deleteTask(tasks.id)
