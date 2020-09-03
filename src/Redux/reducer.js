@@ -133,19 +133,6 @@ const kanbanControlPanel = (state = initialState, action) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-// console.log(newPriority)
 // return {
 //     state.list.map((el, i) => {
 // todos: [...state.todos, {title: action.payload, done: false, id: Math.random()}]
