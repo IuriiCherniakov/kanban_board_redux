@@ -1,9 +1,9 @@
 const initialState = {
     list: [
-        {id: Math.random(), status: 'todo', priority: 1, name: 'Text 1'},
-        {id: Math.random(), status: 'todo', priority: 2, name: 'Text 2'},
-        {id: Math.random(), status: 'todo', priority: 3, name: 'Text 3'},
-        {id: Math.random(), status: 'todo', priority: 4, name: 'Text 4'},
+        {id: Math.random(), status: 'todo', priority: 1, name: 'Text a'},
+        {id: Math.random(), status: 'todo', priority: 2, name: 'Text b'},
+        {id: Math.random(), status: 'todo', priority: 3, name: 'Text c'},
+        {id: Math.random(), status: 'todo', priority: 4, name: 'Text d'},
 
     ],
     columns: [
