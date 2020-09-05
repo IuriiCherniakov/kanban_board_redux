@@ -32,7 +32,7 @@ function AddModalColumn(props) {
                     setIsModal(true)
                 }}>ADD NEW Column</Button>
                 <Modal isOpen={isModal}>
-                    <ModalHeader>Add new column!!!</ModalHeader>
+                    <ModalHeader><b>Add new column</b></ModalHeader>
                     <ModalBody>
                         <Label>New title</Label>
                         <Input type='text' onChange={(e) => {
