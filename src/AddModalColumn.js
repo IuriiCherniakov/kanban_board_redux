@@ -45,7 +45,7 @@ function AddModalColumn(props) {
                     {/*        <option value={'todo'}>Todo</option>*/}
                     {/*        <option value={'progress'}>progress</option>*/}
                     {/*        <option value={'review'}>review</option>*/}
-                    {/*        <option value={'done'}>done</option>*/}
+
 
                     <Input  value={inputNewColumnStatus}  onChange={(e)=> {setInputNewColumnStatus(e.target.value)}}  />
 
