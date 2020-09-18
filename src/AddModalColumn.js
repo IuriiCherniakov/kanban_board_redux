@@ -46,11 +46,6 @@ function AddModalColumn(props) {
                     <Input  value={inputNewColumnStatus}  onChange={(e)=> {setInputNewColumnStatus(e.target.value)}}  />
 
 
-
-
-
-
-
                     </ModalBody>
                     <ModalFooter>
                         <Button onClick={addNewColumnButton}>Add new Column</Button>
