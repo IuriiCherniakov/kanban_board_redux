@@ -43,19 +43,12 @@ function AddModalTask(props) {
                             <Col>
 
                                 <Label>status</Label>
+
                                 <Input type='select' value={inputNewTaskStatus} onChange={(e)=> {setInputNewTaskStatus(e.target.value)}}>
                                     {statuses.map(el=> <option value={el}>{el}</option> )}
-
-                                    {/*<option value="progress">progress</option>*/}
-                                    {/*<option value="review">review</option>*/}
-                                    {/*<option value="done">done</option>*/}
-
                                 </Input>
 
                             </Col>
-
-
-
 
                         </Row>
 
