@@ -131,8 +131,6 @@ const kanbanControlPanel = (state = initialState, action) => {
         // //         })
         // //     };
 
-
-
 // return {
 //     state.list.map((el, i) => {
 // todos: [...state.todos, {title: action.payload, done: false, id: Math.random()}]
