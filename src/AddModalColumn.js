@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import './App.css';
 import {Button, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader} from "reactstrap";
-import AddModalTask from "./AddModalTask";
+
 
 
 function AddModalColumn(props) {

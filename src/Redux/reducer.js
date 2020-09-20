@@ -140,7 +140,6 @@ const kanbanControlPanel = (state = initialState, action) => {
 // case 'TASK_ADD':
 //     return {...state, list,: [...state.list]}
 
-
         default:
             return state
     }
