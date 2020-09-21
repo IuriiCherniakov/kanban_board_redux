@@ -20,7 +20,6 @@ function AddModalColumn(props) {
         addNewCol(inputNewColumn,inputNewColumnStatus);
         setInputNewColumn('')
         setIsModal(false)
-
     }
 
 
